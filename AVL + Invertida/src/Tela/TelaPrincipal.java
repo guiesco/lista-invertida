@@ -22,7 +22,7 @@ public class TelaPrincipal {
     }
 
     public void opcoes(){
-        System.out.println(" 1 - Adiciona pessoa \n 2 - Deleta pessoa \n 3 - Mostra pessoas atuais\n 4 - Adicionar carga personalizada\n 5 - Buscar por categoria simples\n 6 - Buscar por categoria composto\n 7 - Adicionar carga padrao");
+        System.out.println(" 1 - Adiciona pessoa \n 2 - Deleta pessoa \n 3 - Mostra pessoas atuais\n 4 - Buscar por categoria simples\n 5 - Buscar por categoria composta\n 4 - Adicionar varias pessoas\n 7 - Adicionar dados padrao");
         switch (teclado.nextInt()){
             case 1:
                 System.out.println("Digite a matricula");
@@ -41,17 +41,9 @@ public class TelaPrincipal {
                 opcoes();
                 break;
             case 2:
-                System.out.println("1 - Deletar por ID\n 2 - Deletar por matricula");
-                int opcao = teclado.nextInt();
-                if (opcao == 1){
-                    System.out.println("Digite o ID");
-                    int id = teclado.nextInt();
-                    ctrl.deletaPessoa(id);
-                }else {
-                    System.out.println("Digite a matricula");
-                    matricula = teclado.nextInt();
-                    ctrl.deletaPessoaMatricula(matricula);
-                }
+                System.out.println("Digite o ID");
+                int id = teclado.nextInt();
+                ctrl.deletaPessoa(id);
                 opcoes();
                 break;
             case 3:
@@ -69,24 +61,6 @@ public class TelaPrincipal {
                 opcoes();
                 break;
             case 4:
-                System.out.println("Quantas pessoas deseja adicionar?");
-                for (int i = teclado.nextInt(); i>0; i--) {
-                    System.out.println("Digite a matricula");
-                    matricula = teclado.nextInt();
-                    System.out.println("Digite o nome:\n");
-                    nome = teclado.next();
-                    System.out.println("Digite a idade");
-                    idade = teclado.next();
-                    System.out.println("Digite a cidade de origem");
-                    cidade = teclado.next();
-                    System.out.println("Digite o curso");
-                    curso = teclado.next();
-
-                    ctrl.criaPessoa(matricula, nome, curso, cidade, idade);
-                }
-                    opcoes();
-                    break;
-            case 5:
                 System.out.println("Digite o parametro desejado");
 
                 msg = "";
@@ -102,7 +76,7 @@ public class TelaPrincipal {
                 System.out.println(msg);
                 opcoes();
                 break;
-            case 6:
+            case 5:
                 System.out.println("Digite o primeiro parametro desejado");
                 String param1 = teclado.next();
                 System.out.println("Digite o segundo parametro desejado");
@@ -118,6 +92,25 @@ public class TelaPrincipal {
                     msg += "\n\n";
                 }
                 System.out.println(msg);
+                opcoes();
+                break;
+            case 6:
+                System.out.println("Quantas pessoas deseja adicionar?");
+                int nLoops = teclado.nextInt();
+                for (int i = nLoops; i>0; i--) {
+                    System.out.println("Digite a matricula");
+                    matricula = teclado.nextInt();
+                    System.out.println("Digite o nome:\n");
+                    nome = teclado.next();
+                    System.out.println("Digite a idade");
+                    idade = teclado.next();
+                    System.out.println("Digite a cidade de origem");
+                    cidade = teclado.next();
+                    System.out.println("Digite o curso");
+                    curso = teclado.next();
+
+                    ctrl.criaPessoa(matricula, nome, curso, cidade, idade);
+                }
                 opcoes();
                 break;
             case 7:
